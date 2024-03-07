@@ -60,13 +60,13 @@ flowchart TD
 ```
 
 ##### Test Case Table:
-| **\#case** | **Flow** (Conditions)                          | **Condition**    | **Input**      | **Output**                           |
-| ---------- | ---------------------------------------------- | ---------------- | -------------- | ------------------------------------ |
-| 1          | IF-1(T)                                        | args == null     | args = null    | Exception: MissingArgumentException  |
-| 2          | IF-1(F), IF-2(T)                               | args.length > 1  | args = {4, 12} | Exception: Only1ArgumentException    |
-| 3          | IF-1(F), IF-2(F), IF-3(T)                      | num < 0          | num = -4       | Exception: NoPositiveNumberException |
-| 4          | IF-1(F), IF-2(F), IF-3(F), WH-1{0}             | num = 2          | num = 2        | True                                 |
-| 5          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(F)\] | num = 3          | num = 3        | True                                 |
-| 6          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(T)\] | num = 4          | num = 4        | False                                |
-| 7          | IF-1(F), IF-2(F), IF-3(F), WH-1+               | num > 4          | num = 17       | True                                 |
-| 8          | Exception: NoPositiveNumberException           | args\[0\] = NaN. |                | Exception: NoPositiveNumberException |
+| **\#case** | **Flow** (Conditions)                          | **Condition**    | **Input**          | **Output**                           |
+| ---------- | ---------------------------------------------- | ---------------- | ------------------ | ------------------------------------ |
+| 1          | IF-1(T)                                        | args == null     | args = null        | Exception: MissingArgumentException  |
+| 2          | IF-1(F), IF-2(T)                               | args.length > 1  | args = {4, 12}     | Exception: Only1ArgumentException    |
+| 3          | IF-1(F), IF-2(F), IF-3(T)                      | num < 0          | num = -4           | Exception: NoPositiveNumberException |
+| 4          | IF-1(F), IF-2(F), IF-3(F), WH-1{0}             | num = 2          | num = 2            | True                                 |
+| 5          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(F)\] | num = 3          | num = 3            | True                                 |
+| 6          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(T)\] | num = 4          | num = 4            | False                                |
+| 7          | IF-1(F), IF-2(F), IF-3(F), WH-1+               | num > 4          | num = 17           | True                                 |
+| 8          | Exception: NoPositiveNumberException           | args\[0\] = NaN. | args\[0\] = "NaN." | Exception: NoPositiveNumberException |
