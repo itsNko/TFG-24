@@ -4,8 +4,9 @@
 #### Condition
 ##### Cyclomatic Complexity:
 ```mermaid
-A{E1} -->|T| B[2]
-A -->|F| C[4]
-B --> D[End]
-C --> D
+flowchart TD
+    A{E1} -->|T| B[2]
+    A -->|F| C[4]
+    B --> D[End]
+    C --> D
 ```
