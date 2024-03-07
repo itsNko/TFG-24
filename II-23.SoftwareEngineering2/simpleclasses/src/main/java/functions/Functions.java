@@ -1,6 +1,10 @@
-package tfg23;
+package functions;
 
 import java.util.Calendar;
+
+import exceptions.MissingArgumentException;
+import exceptions.NoPositiveNumberException;
+import exceptions.Only1ArgumentException;
 
 public class Functions {
 
@@ -42,5 +46,29 @@ public class Functions {
             return 29;
         else
             return getMonthDays(month);
+    }
+
+    public static boolean isPrime(String[] args)
+            throws MissingArgumentException, Only1ArgumentException, NoPositiveNumberException {
+        if (args == null)
+            throw new MissingArgumentException();
+        else if (args.length > 1)
+            throw new Only1ArgumentException();
+        else {
+            try {
+                float numF = Float.parseFloat(args[0]);
+                int num = (int) numF;
+                if (num <= 0)
+                    throw new NoPositiveNumberException();
+                else {
+                    for (int i = 2; i < num; i++)
+                        if (num % i == 0)
+                            return false;
+                    return true;
+                }
+            } catch (NumberFormatException e) {
+                throw new NoPositiveNumberException();
+            }
+        }
     }
 }
