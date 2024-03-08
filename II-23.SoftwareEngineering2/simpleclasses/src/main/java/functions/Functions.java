@@ -2,6 +2,7 @@ package functions;
 
 import java.util.Calendar;
 
+import exceptions.InvertException;
 import exceptions.MissingArgumentException;
 import exceptions.NoPositiveNumberException;
 import exceptions.Only1ArgumentException;
@@ -48,6 +49,13 @@ public class Functions {
             return getMonthDays(month);
     }
 
+    /**
+     * @param args Set of strings consisting of integers.
+     * @return Returns whether the numbers in args are all prime or not.
+     * @throws MissingArgumentException When there are no numbers in args.
+     * @throws Only1ArgumentException When there is more than 1 number in the args variable.
+     * @throws NoPositiveNumberException When there are negative numbers in the args variable.
+     */
     public static boolean isPrime(String[] args)
             throws MissingArgumentException, Only1ArgumentException, NoPositiveNumberException {
         if (args == null)
@@ -70,5 +78,30 @@ public class Functions {
                 throw new NoPositiveNumberException();
             }
         }
+    }
+
+    /**
+     * @param num The number to invert.
+     * @return The given number inverted.
+     * @throws InvertException Thrown when the number is not a positive integer between 2 and 9
+     *         digits (included).
+     */
+    public static int invert(String num) throws InvertException {
+        int result = 0;
+        try {
+            int number = Integer.parseInt(num);
+            if (number < 1 || number < 10 || number > 1e10)
+                throw new InvertException();
+
+            int remainder;
+            while (number > 0) {
+                remainder = number % 10;
+                result = result * 10 + remainder;
+                number /= 10;
+            }
+        } catch (Exception e) {
+            throw new InvertException();
+        }
+        return result;
     }
 }

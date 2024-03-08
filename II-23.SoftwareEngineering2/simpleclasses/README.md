@@ -70,3 +70,22 @@ flowchart TD
 | 6          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(T)\] | num = 4          | num = 4            | False                                |
 | 7          | IF-1(F), IF-2(F), IF-3(F), WH-1+               | num > 4          | num = 17           | True                                 |
 | 8          | Exception: NoPositiveNumberException           | args\[0\] = NaN. | args\[0\] = "NaN." | Exception: NoPositiveNumberException |
+
+## invert Function
+### Dynamic Black Box Equivalence Partition and Limit Values Unit Tests:
+#### Equivalence Partition Table
+
+| **Input Condition**                      | **Valid Equivalence Classes** | **Invalid Equivalence Classes** |
+| ---------------------------------------- | ----------------------------- | ------------------------------- |
+| Number has to be integer and positive.   | n ∈ℕ<sup>+</sub>              | n ∉ℕ<sup>+</sub>                |
+| Number has to be between 2 and 9 digits. | 9 < n < 1E10                  | n < 10, n > 1E10                |
+
+### Input Cases Table:
+
+| **\#case** | **Valid/Invalid** | **Input**   | **Covered Equivalence Classes** | **Output**                 |
+| ---------- | ----------------- | ----------- | ------------------------------- | -------------------------- |
+| 1          | V                 | "123456789" | 1, 3                            | 987654321                  |
+| 2          | I                 | null        | 2                               | Exception: InvertException |
+| 3          | I                 | "a"         | 2                               | Exception: InvertException |
+| 4          | I                 | "9"         | 4                               | Exception: InvertException |
+| 5          | I                 | "1e10"      | 5                               | Exception: InvertException |
