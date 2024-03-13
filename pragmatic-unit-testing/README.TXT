@@ -1,0 +1,2 @@
+# Pragmatic Unit Testing Test Clases
+ - Here are stored the project testing code from the study of the book Pragmatic Unit Testing in Java 8 with JUnit, Jeff Langr with Andy Hunt & Dave Thomas, 2015 Revision, The Pragmatic Programmers.

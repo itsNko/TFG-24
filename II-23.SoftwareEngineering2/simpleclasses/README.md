@@ -15,7 +15,6 @@ flowchart TD
 | ---------- | ------------- | --------------------------------- | --------- | ---------- |
 | 1          | E1(T), 2, End | isLeapYear(year) && month == 2    | 2004, 1   | 29         |
 | 2          | E1(F), 4, End | !(isLeapYear(year) && month == 2) | 2002, 1   | 28         |
-
 #### Condition Decision
 ##### Cyclomatic Complexity:
 ```mermaid
@@ -33,7 +32,6 @@ flowchart TD
 | 1          | E1.1(F), 4, End          | !isLeapYear(year) && year=*    | 2003, 0   | 31         |
 | 2          | E1.1(T), E1.2(T), 2, End | isLeapYear(year) && month == 2 | 2004, 1   | 29         |
 | 3          | E1.1(T), E1.2(F), 4, End | isLeapYear(year) && month != 2 | 2004, 0   | 31         |
-
 ## isPrime Function
 ### Dynamic White Box Unit Tests:
 #### Condition
@@ -58,7 +56,6 @@ flowchart TD
     K -->|F| L
     L --> D
 ```
-
 ##### Test Case Table:
 | **\#case** | **Flow** (Conditions)                          | **Condition**    | **Input**          | **Output**                           |
 | ---------- | ---------------------------------------------- | ---------------- | ------------------ | ------------------------------------ |
@@ -70,18 +67,25 @@ flowchart TD
 | 6          | IF-1(F), IF-2(F), IF-3(F), WH-1{1} \[IF-4(T)\] | num = 4          | num = 4            | False                                |
 | 7          | IF-1(F), IF-2(F), IF-3(F), WH-1+               | num > 4          | num = 17           | True                                 |
 | 8          | Exception: NoPositiveNumberException           | args\[0\] = NaN. | args\[0\] = "NaN." | Exception: NoPositiveNumberException |
-
+### Dynamic Black Box Unit Tests:
+#### Equivalence Partition and Boundary Value Table
+| \#case | Condition                                                   | Input                    | Output                               |
+| ------ | ----------------------------------------------------------- | ------------------------ | ------------------------------------ |
+| 1      | Correct class equivalence partition.                        | args = {"7"}             | True                                 |
+| 2      | Incorrect class equivalence partition.                      | args = {"4"}             | False                                |
+| 3      | Limit Value Positive: 1                                     | args = {"1"}             | True                                 |
+| 4      | Limit Value Negative: 0                                     | args = {"0"}             | Exception: NoPositiveNumberException |
+| 5      | Exception equivalence partition: Missing Arguments.         | args = {""}, args = null | Exception: MissingArgumentException  |
+| 6      | Exception equivalence partition: Single Argument Number     | args = {"2", "7"}        | Exception: Only1ArgumentException    |
+| 7      | Exception equivalence partition: The input is not a number. | args = {"a"}             | Exception: NoPositiveNumberException |
 ## invert Function
 ### Dynamic Black Box Equivalence Partition and Limit Values Unit Tests:
 #### Equivalence Partition Table
-
 | **Input Condition**                      | **Valid Equivalence Classes** | **Invalid Equivalence Classes** |
 | ---------------------------------------- | ----------------------------- | ------------------------------- |
 | Number has to be integer and positive.   | n ∈ℕ<sup>+</sub>              | n ∉ℕ<sup>+</sub>                |
 | Number has to be between 2 and 9 digits. | 9 < n < 1E10                  | n < 10, n > 1E10                |
-
 ### Input Cases Table:
-
 | **\#case** | **Valid/Invalid** | **Input**   | **Covered Equivalence Classes** | **Output**                 |
 | ---------- | ----------------- | ----------- | ------------------------------- | -------------------------- |
 | 1          | V                 | "123456789" | 1, 3                            | 987654321                  |

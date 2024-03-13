@@ -4,14 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import exceptions.InvertException;
 import exceptions.MissingArgumentException;
@@ -64,6 +58,7 @@ class FunctionsTests {
     /////////////
 
     @Test
+
     @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 1st Case")
     void isPrimeDWCTest1() {
         args = null;
@@ -71,23 +66,26 @@ class FunctionsTests {
     }
 
     @Test
+
     @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 2nd Case")
     void isPrimeDWCTest2() {
-        args = new String[] {"4", "12"};
+        args = new String[] { "4", "12" };
         assertThrows(Only1ArgumentException.class, () -> Functions.isPrime(args));
     }
 
     @Test
+
     @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 3rd Case")
     void isPrimeDWCTest3() {
-        args = new String[] {"-4"};
+        args = new String[] { "-4" };
         assertThrows(NoPositiveNumberException.class, () -> Functions.isPrime(args));
     }
 
-    @ParameterizedTest
-    @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 4-7 Cases")
-    @MethodSource("params")
-    void isPrimeDWCParamsTest(String[] args) {
+    @Test
+
+    @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 4th Case")
+    void isPrimeDWCTest4() {
+        args = new String[] { "2" };
         try {
             assertTrue(Functions.isPrime(args));
         } catch (Exception e) {
@@ -95,14 +93,108 @@ class FunctionsTests {
         }
     }
 
-    private static Collection<Arguments> params() {
-        return List.of(Arguments.of(new String[] {"2"}, new String[] {"3"}, new String[] {"4"}, new String[] {"17"}));
+    @Test
+
+    @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 5th Case")
+    void isPrimeDWCTest5() {
+        args = new String[] { "3" };
+        try {
+            assertTrue(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
+
+    @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 6th Case")
+    void isPrimeDWCTest6() {
+        args = new String[] { "4" };
+        try {
+            assertFalse(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+
+    @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 7th Case")
+    void isPrimeDWCTest7() {
+        args = new String[] { "17" };
+        try {
+            assertTrue(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+
     @DisplayName("calculateMonthDays Function Dynamic White Box Condition Unit Test: 8th Case")
     void isPrimeDWCTest8() {
-        args = new String[] {"NaN."};
+        args = new String[] { "NaN." };
+        assertThrows(NoPositiveNumberException.class, () -> Functions.isPrime(args));
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 1st Case")
+    void isPrimeDBPVTest1() {
+        args = new String[] { "7" };
+        try {
+            assertTrue(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 2nd Case")
+    void isPrimeDBPVTest2() {
+        args = new String[] { "4" };
+        try {
+            assertFalse(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 3rd Case")
+    void isPrimeDBPVTest3() {
+        args = new String[] { "1" };
+        try {
+            assertTrue(Functions.isPrime(args));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 4th Case")
+    void isPrimeDBPVTest4() {
+        args = new String[] { "0" };
+        assertThrows(NoPositiveNumberException.class, () -> Functions.isPrime(args));
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 5th Case")
+    void isPrimeDBPVTest5() {
+        args = null;
+        assertThrows(MissingArgumentException.class, () -> Functions.isPrime(args));
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 6th Case")
+    void isPrimeDBPVTest6() {
+        args = new String[] { "2", "7" };
+        assertThrows(Only1ArgumentException.class, () -> Functions.isPrime(args));
+    }
+
+    @Test
+    @DisplayName("isPrime Function Dynamic Black Box Equivalence Partition and Limit Value Unit Test: 7th Case")
+    void isPrimeDBPVTest7() {
+        args = new String[] { "a" };
         assertThrows(NoPositiveNumberException.class, () -> Functions.isPrime(args));
     }
 
