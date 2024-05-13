@@ -73,7 +73,6 @@ public class ForumBL {
 
         User u = dao.getUserDAO(id);
 
-
         if (u == null)
             throw new Exception("NAN not in Database");
 
@@ -108,4 +107,3 @@ public class ForumBL {
         return vat;
     }
 }
-
